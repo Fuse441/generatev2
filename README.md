@@ -1,71 +1,36 @@
 # generatev2 README
 
-This is the README for your extension "generatev2". After writing up a brief description, we recommend including the following sections.
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
-## Features
+## ฟีเจอร์
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- เพิ่มข้อมูลจากไฟล์ JSON ลงใน MongoDB
+- รองรับการเชื่อมต่อ MongoDB ด้วย URL และชื่อฐานข้อมูลที่กำหนดในไฟล์ `.env`
+- ลบข้อมูลที่ตรงกับเงื่อนไขก่อนทำการแทรกข้อมูลใหม่
 
-For example if there is an image subfolder under your extension project workspace:
+## ข้อกำหนด
 
-\!\[feature X\]\(images/feature-x.png\)
+- Visual Studio Code เวอร์ชันล่าสุด
+- Node.js และ npm
+- MongoDB สำหรับเก็บข้อมูล
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### การติดตั้ง
+    1. ตั้งค่าไฟล์ `.env` โดยให้ใส่ข้อมูลที่จำเป็น เช่น `DATABASE_URL`, `DATABASE_NAME`, และ `COMMON`
 
-## Requirements
+## การตั้งค่าโปรแกรมเสริม
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+โปรแกรมเสริมนี้ไม่ได้ตั้งค่าผ่าน `contributes.configuration` แต่คุณสามารถตั้งค่าการเชื่อมต่อฐานข้อมูลในไฟล์ `.env` ได้
 
-## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## หมายเหตุการอัปเดต
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
+ผู้ใช้จะได้ประโยชน์จากหมายเหตุการอัปเดตในขณะที่คุณอัปเดตโปรแกรมเสริม
 
 ### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+ดันแปลงมาจากเวอร์ชั่นแรกเพื่อใช้ได้สะดวกยิ่งขึ้น
 
 ---
 
-## Following extension guidelines
+## แนวทางการพัฒนาโปรแกรมเสริม
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+โปรดตรวจสอบให้แน่ใจว่าคุณได้อ่านคู่มือแนวทางการพัฒนาโปรแกรมเสริมและปฏิบัติตามแนวทางปฏิบัติที่ดีที่สุดในการสร้างโปรแกรมเสริมของคุณ
