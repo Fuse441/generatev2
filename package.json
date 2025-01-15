@@ -9,13 +9,20 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:generatev2.deploy",
+    "onCommand:generatev2.generate"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "generatev2.generate",
         "title": "generateV2"
+      },
+      {
+        "command": "generatev2.deploy",
+        "title": "generateV2 autoDeploy"
       }
     ],
     "keybindings": [
@@ -23,6 +30,12 @@
         "command": "generatev2.generate",
         "key": "ctrl+alt+g",
         "mac": "cmd+alt+g",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "generatev2.deploy",
+        "key": "ctrl+alt+d",
+        "mac": "cmd+alt+d",
         "when": "editorTextFocus"
       }
     ]
@@ -53,9 +66,11 @@
     "esbuild": "^0.24.0",
     "eslint": "^9.16.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "mongodb": "^6.12.0"
+    "mongodb": "^6.12.0",
+    "ssh2": "^1.16.0",
+    "vscode": "^1.1.37"
   }
 }
