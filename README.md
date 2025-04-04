@@ -1,39 +1,18 @@
-# generatev2 README
-
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
-## ฟีเจอร์
-
-- เพิ่มข้อมูลจากไฟล์ JSON ลงใน MongoDB
-- รองรับการเชื่อมต่อ MongoDB ด้วย URL และชื่อฐานข้อมูลที่กำหนดในไฟล์ `.env`
-- ลบข้อมูลที่ตรงกับเงื่อนไขก่อนทำการแทรกข้อมูลใหม่
-
-## ข้อกำหนด
-
-- Visual Studio Code เวอร์ชันล่าสุด
-- Node.js และ npm
-- MongoDB สำหรับเก็บข้อมูล
-
-### การติดตั้ง
-    1. ตั้งค่าไฟล์ `.env` โดยให้ใส่ข้อมูลที่จำเป็น เช่น `DATABASE_URL`, `DATABASE_NAME`, และ `COMMON`
-
-### วิธีการใช้งาน
-    Key : Ctrl + Alt + g
-    Command : Ctrl + P >GenerateV2
-## การตั้งค่าโปรแกรมเสริม
-
-โปรแกรมเสริมนี้ไม่ได้ตั้งค่าผ่าน `contributes.configuration` แต่คุณสามารถตั้งค่าการเชื่อมต่อฐานข้อมูลในไฟล์ `.env` ได้
+# generatev2 Extension
 
 
-## หมายเหตุการอัปเดต
 
-ผู้ใช้จะได้ประโยชน์จากหมายเหตุการอัปเดตในขณะที่คุณอัปเดตโปรแกรมเสริม
+This extension for Visual Studio Code allows you to read JSON configuration files from your project and insert data into a MongoDB database. It connects to the MongoDB database based on the details provided in a `.env` file in your workspace. The extension registers a command `generatev2.generate` to trigger the process.
 
-### 1.0.0
-ดันแปลงมาจากเวอร์ชั่นแรกเพื่อใช้ได้สะดวกยิ่งขึ้น
+⚠️ This extension is intended for local use only.
 
----
+## Features
+- ✅ Read JSON files from specified folders.
+- ✅ Insert structured data into MongoDB collections.
+- ✅ Support for multiple configuration file types (protocols, commands, conditions, etc.).
+- ✅ Provides real-time logs in the VS Code Output Channel (Generate v2).
 
-## แนวทางการพัฒนาโปรแกรมเสริม
-
-โปรดตรวจสอบให้แน่ใจว่าคุณได้อ่านคู่มือแนวทางการพัฒนาโปรแกรมเสริมและปฏิบัติตามแนวทางปฏิบัติที่ดีที่สุดในการสร้างโปรแกรมเสริมของคุณ
+#Config ENV
+- DATABASE_URL=your-mongodb-connection-string
+- DATABASE_NAME=your-database-name
+- COMMON=common-folder-name

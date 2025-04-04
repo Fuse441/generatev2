@@ -3,11 +3,10 @@ import * as fs from "fs";
 import * as path from "path";
 import { json } from "stream/consumers";
 const { MongoClient } = require("mongodb");
-const {ssh2} = require('ssh2');
 
-const SSH = new ssh2.Client();
 
 export function activate(context: vscode.ExtensionContext) {
+	console.log("active");
 	const folderConfig: string[] = [
 		"protocol",
 		"validateCommand",
@@ -25,10 +24,13 @@ export function activate(context: vscode.ExtensionContext) {
 	const disposable = vscode.commands.registerCommand(
 		"generatev2.generate",
 		async () => {
+			outputChannel.show();
 			vscode.window.showInformationMessage("กำลัง Insert ข้อมูล");
+			
 			outputChannel.appendLine(`-------------- start progress --------------`);
 			outputChannel.clear();
-			outputChannel.show();
+			
+			
 			
 			const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
 			const pathENV: string = path.join(workspaceFolder!.uri.fsPath, ".env");
@@ -160,84 +162,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		}
 	);
-	const deployCommand = vscode.commands.registerCommand(
-		"generatev2.deploy",  // Change this to match the command name in package.json
-		async () => {
-			vscode.window.showInformationMessage("กำลัง Deploy");
-			outputChannel.appendLine(`-------------- start progress --------------`);
-			outputChannel.clear();
-			outputChannel.show();
-			
-			const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
-			const pathENV: string = path.join(workspaceFolder!.uri.fsPath, ".env");
-			if (workspaceFolder) {
-				const projectName = workspaceFolder.name;
-			
-				try {
-					const env = await fs.readFileSync(pathENV, "utf-8");
-					const envVars: { [key: string]: string } = {};
-					const lines = env.split("\n");
 
-					for (const line of lines) {
-						if (line) {
-							const key = line.trim().split("=")[0];
-							const value = line.trim().split("=")[1].replace(/"/g, "");
-							envVars[key] = value;
-						}
-					}
-					const jsonEnv = envVars;
-					const conntionString = jsonEnv.DATABASE_URL;
-					const collection = jsonEnv.DATABASE_NAME;
-					const common = jsonEnv.COMMON;
-					const zoneQA = jsonEnv.AUTO_DEPLOY_QA
-					
-					outputChannel.appendLine(` log ==> ${zoneQA} `);
-				// 	const config = {
-				// 		host: '',  
-				// 		port: 22,       
-				// 		username: '',
-				// 		password: ''
-				// 		// privateKey: require('fs').readFileSync('/path/to/your/private/key'), // คีย์ส่วนตัว
-				// 		// // หรือถ้าคุณใช้รหัสผ่าน, คุณสามารถใช้ 'password' แทน
-				// 		// // password: 'your-password'
-				// 	  };
-					  
-				// 	  // เชื่อมต่อ SSH
-				// 	  SSH.on('ready', () => {
-				// 		console.log('SSH Connect ready.');
-					  
-				// 		// รันคำสั่งบนเซิร์ฟเวอร์
-				// 		SSH.exec('kubectl get pod -A', (err:any, stream:any) => {
-				// 		  if (err) {
-				// 			console.log('Error executing command:', err);
-				// 			return;
-				// 		  }
-					  
-				// 		  stream.on('close', (code:any, signal:any) => {
-				// 			console.log(`Command finished with code ${code}, signal: ${signal}`);
-				// 			SSH.end();
-				// 		  }).on('data', (data:any) => {
-				// 			console.log('STDOUT:', data.toString());
-				// 		  }).on('stderr', (data:any) => {
-				// 			console.log('STDERR:', data.toString());
-				// 		  });
-				// 		});
-				// 	  }).on('error', (err:any) => {
-				// 		console.error('SSHection error:', err);
-				// 	  }).connect(config);
-
-				// }catch(err){
-
-				// }
-				// }
-				}catch(err:any){
-
-				}
-			}
-		
-		}
-	  );
-	  context.subscriptions.push(deployCommand);
 	context.subscriptions.push(disposable);
 }
 
